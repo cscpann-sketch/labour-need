@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مزدور بازار - Mazdoor Bazaar</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --saffron-light: #FF8C33;
+    --saffron-dark: #CC5500;
+    --earth: #2C1810;
+    --cream: #FFF8F0;
+    --clay: #8B4513;
+    --sky: #1A3A5C;
+    --sky-light: #2563EB;
+    --gold: #F59E0B;
+    --green: #16A34A;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light-gray: #F3F4F6;
+    --shadow: 0 4px 20px rgba(255,107,0,0.15);
+    --shadow-heavy: 0 8px 40px rgba(0,0,0,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Baloo 2', sans-serif;
+    background: var(--cream);
+    color: var(--earth);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-heavy);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 44px; height: 44px;
+    background: white;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .logo-text {
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  .logo-text span { font-size: 12px; font-weight: 400; opacity: 0.85; display: block; }
+
+  .nav-btns { display: flex; gap: 10px; }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-white { background: white; color: var(--saffron-dark); }
+  .btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.6); }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, var(--sky) 0%, var(--sky-light) 100%);
+    color: white;
+    padding: 60px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 60%; height: 200%;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    margin-bottom: 14px;
+    line-height: 1.2;
+    position: relative;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 17px;
+    opacity: 0.85;
+    margin-bottom: 36px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-hero-primary {
+    background: var(--saffron);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(255,107,0,0.5);
+  }
+  .btn-hero-primary:hover { background: var(--saffron-light); transform: translateY(-2px); }
+
+  .btn-hero-secondary {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .btn-hero-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+  /* STATS */
+  .stats-bar {
+    background: white;
+    border-bottom: 3px solid var(--saffron);
+    padding: 20px 24px;
+  }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--saffron);
+    display: block;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+
+  /* MAIN CONTENT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--earth);
+    margin-bottom: 8px;
+  }
+  .section-title span { color: var(--saffron); }
+  .section-sub {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  /* SEARCH */
+  .search-box {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    border: 2px solid transparent;
+    transition: border 0.2s;
+  }
+  .search-box:focus-within { border-color: var(--saffron); }
+  .search-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .search-input:focus { border-color: var(--saffron); }
+  .search-select {
+    padding: 12px 16px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    background: white;
+    min-width: 150px;
+    transition: border 0.2s;
+  }
+  .search-select:focus { border-color: var(--saffron); }
+  .search-btn {
+    background: var(--saffron);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .search-btn:hover { background: var(--saffron-dark); }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    background: white;
+    padding: 6px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    width: fit-content;
+  }
+  .tab {
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--gray);
+    transition: all 0.2s;
+    font-family: 'Baloo 2', sans-serif;
+  }
+  .tab.active {
+    background: var(--saffron);
+    color: white;
+    box-shadow: 0 3px 12px rgba(255,107,0,0.4);
+  }
+  .tab:hover:not(.active) { background: var(--light-gray); color: var(--earth); }
+
+  /* LABOUR CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .labour-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: all 0.25s;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  .labour-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--saffron);
+  }
+
+  .card-top {
+    background: linear-gradient(135deg, var(--sky) 0%, var(--sky-light) 100%);
+    padding: 24px 20px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    border: 3px solid rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+
+  .card-name {
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+  .card-profession {
+    background: var(--saffron);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .card-body { padding: 16px 20px; }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .info-row strong { color: var(--earth); }
+  .info-icon { font-size: 15px; }
+
+  .card-rate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--cream);
+    border-radius: 10px;
+    margin-bottom: 14px;
+  }
+  .rate-label { font-size: 12px; color: var(--gray); }
+  .rate-amount { font-size: 20px; font-weight: 800; color: var(--saffron); }
+  .rate-unit { font-size: 11px; color: var(--gray); }
+
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .available-badge.yes { background: #DCFCE7; color: #16A34A; }
+  .available-badge.no { background: #FEE2E2; color: #DC2626; }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  .card-actions { display: flex; gap: 8px; }
+  .btn-call {
+    flex: 1;
+    background: var(--green);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-call:hover { background: #15803D; }
+  .btn-hire {
+    flex: 1;
+    background: var(--saffron);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-hire:hover { background: var(--saffron-dark); }
+
+  /* CATEGORIES */
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .cat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid var(--light-gray);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .cat-card:hover, .cat-card.active {
+    border-color: var(--saffron);
+    background: #FFF3E8;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .cat-icon { font-size: 30px; margin-bottom: 8px; }
+  .cat-name { font-size: 13px; font-weight: 600; color: var(--earth); }
+  .cat-count { font-size: 11px; color: var(--gray); }
+
+  /* FORM */
+  .form-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--saffron);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .form-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--earth);
+    margin-bottom: 6px;
+  }
+  .form-subtitle {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--earth);
+  }
+  .form-control {
+    padding: 11px 14px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+    background: white;
+  }
+  .form-control:focus { border-color: var(--saffron); }
+  .form-control::placeholder { color: #9CA3AF; }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .skill-tag {
+    background: var(--cream);
+    border: 2px solid var(--light-gray);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 500;
+  }
+  .skill-tag.selected {
+    background: var(--saffron);
+    border-color: var(--saffron);
+    color: white;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(255,107,0,0.4);
+    margin-top: 8px;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(255,107,0,0.5); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 460px;
+    width: 100%;
+    box-shadow: var(--shadow-heavy);
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--light-gray);
+  }
+  .modal-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky), var(--sky-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .modal-name { font-size: 20px; font-weight: 800; color: var(--earth); }
+  .modal-prof { color: var(--saffron); font-weight: 600; font-size: 14px; }
+  .modal-body p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+  .modal-details {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .detail-item { font-size: 13px; }
+  .detail-key { color: var(--gray); margin-bottom: 2px; }
+  .detail-val { font-weight: 700; color: var(--earth); font-size: 15px; }
+  .modal-btns { display: flex; gap: 10px; margin-top: 20px; }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--light-gray);
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: #E5E7EB; }
+
+  /* SUCCESS */
+  .success-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--shadow-heavy);
+    z-index: 300;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  .success-toast.show { transform: translateY(0); opacity: 1; }
+
+  /* SECTIONS */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* FOOTER */
+  footer {
+    background: var(--earth);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    margin-top: 60px;
+  }
+  footer strong { color: var(--saffron); }
+
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .modal-details { grid-template-columns: 1fr; }
+    .stats-inner { gap: 24px; }
+    .header-inner { padding: 0; }
+    .logo-text { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#" onclick="showSection('home')">
+      <div class="logo-icon">🔨</div>
+      <div class="logo-text">
+        Mazdoor Bazaar
+        <span>مزدور بازار - ہنرمند مزدور</span>
+      </div>
+    </a>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="showSection('register')">🔐 Register / اندراج</button>
+      <button class="btn btn-white" onclick="showSection('find')">🔍 Labour Dhundhein</button>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-num">1,240+</span>
+      <span class="stat-label">🔨 Registered Labour</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">38</span>
+      <span class="stat-label">📍 Cities / Shehr</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">860+</span>
+      <span class="stat-label">✅ Jobs Completed</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">🛠️ Professions / Pesha</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOME SECTION -->
+<div id="section-home" class="section active">
+  <div class="hero">
+    <h1>Apna <em>Hunar</em> Dikhao,<br>Kaam Pao! 💪</h1>
+    <p>Pakistan ka sab se bada online labour platform. Mistri, Painter, Plumber — sab yahan milenge!</p>
+    <div class="hero-btns">
+      <button class="btn-hero-primary" onclick="showSection('register')">🔨 Main Labour Hoon — Register Karein</button>
+      <button class="btn-hero-secondary" onclick="showSection('find')">🏠 Mujhe Labour Chahiye</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <p class="section-title">Pesha Categories <span>/ پیشہ</span></p>
+    <p class="section-sub">Jo kaam chahiye wo chunein</p>
+    <div class="categories">
+      <div class="cat-card active" onclick="filterCategory('all', this)">
+        <div class="cat-icon">🔨</div>
+        <div class="cat-name">Sab / All</div>
+        <div class="cat-count">1,240 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('mistri', this)">
+        <div class="cat-icon">🧱</div>
+        <div class="cat-name">Mistri / راج</div>
+        <div class="cat-count">320 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('plumber', this)">
+        <div class="cat-icon">🔧</div>
+        <div class="cat-name">Plumber</div>
+        <div class="cat-count">180 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('electrician', this)">
+        <div class="cat-icon">⚡</div>
+        <div class="cat-name">Electrician</div>
+        <div class="cat-count">240 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('painter', this)">
+        <div class="cat-icon">🎨</div>
+        <div class="cat-name">Painter</div>
+        <div class="cat-count">160 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('carpenter', this)">
+        <div class="cat-icon">🪵</div>
+        <div class="cat-name">Carpenter / Badhei</div>
+        <div class="cat-count">140 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('welder', this)">
+        <div class="cat-icon">🔩</div>
+        <div class="cat-name">Welder / Lohar</div>
+        <div class="cat-count">90 log</div>
+      </div>
+      <div class="cat-card" onclick="filterCategory('driver', this)">
+        <div class="cat-icon">🚛</div>
+        <div class="cat-name">Driver / Khallasi</div>
+        <div class="cat-count">110 log</div>
+      </div>
+    </div>
+
+    <p class="section-title">Available <span>Labour</span> Dhundhein</p>
+    <p class="section-sub">Abhi kaam ke liye tayar mazdoor</p>
+
+    <div class="search-box">
+      <div class="search-row">
+        <input class="search-input" type="text" placeholder="🔍 Naam ya pesha search karein..." id="searchInput" oninput="filterCards()">
+        <select class="search-select" id="cityFilter" onchange="filterCards()">
+          <option value="">📍 Sab Shehr</option>
+          <option>Karachi</option>
+          <option>Lahore</option>
+          <option>Islamabad</option>
+          <option>Rawalpindi</option>
+          <option>Faisalabad</option>
+          <option>Peshawar</option>
+          <option>Quetta</option>
+        </select>
+        <button class="search-btn" onclick="filterCards()">Search کریں</button>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="cardsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER SECTION -->
+<div id="section-register" class="section">
+  <div class="hero" style="padding: 40px 24px 50px;">
+    <h1>Apna <em>Profile</em> Banao 📝</h1>
+    <p>Apni information bharein aur hazaron graahakon tak pahuncho!</p>
+  </div>
+  <div class="container">
+    <div class="form-card">
+      <div class="form-title">🔨 Labour Registration Form</div>
+      <div class="form-subtitle">Tamam fields zaroor bharein — * starred fields lazmi hain</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">* Poora Naam / Full Name</label>
+          <input class="form-control" type="text" placeholder="Maslan: Muhammad Ali" id="reg-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">* Phone Number</label>
+          <input class="form-control" type="tel" placeholder="0300-1234567" id="reg-phone">
+        </div>
+        <div class="form-group">
+          <label class="form-label">* Pesha / Profession</label>
+          <select class="form-control" id="reg-profession">
+            <option value="">-- Chunein --</option>
+            <option>Mistri / Mason</option>
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Painter</option>
+            <option>Carpenter / Badhei</option>
+            <option>Welder / Lohar</option>
+            <option>Driver / Khallasi</option>
+            <option>AC Technician</option>
+            <option>Tile Fitter</option>
+            <option>Gardener / Mali</option>
+            <option>General Labour / Aam Mazdoor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">* Shehr / City</label>
+          <select class="form-control" id="reg-city">
+            <option value="">-- Shehr Chunein --</option>
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Islamabad</option>
+            <option>Rawalpindi</option>
+            <option>Faisalabad</option>
+            <option>Peshawar</option>
+            <option>Quetta</option>
+            <option>Multan</option>
+            <option>Sialkot</option>
+            <option>Gujranwala</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">* Rozana Rate (Rs.)</label>
+          <input class="form-control" type="number" placeholder="Maslan: 1500" id="reg-rate" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tajruba / Experience (Saal)</label>
+          <input class="form-control" type="number" placeholder="Maslan: 5" id="reg-exp" min="0">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Apne Baare Mein (Optional)</label>
+          <textarea class="form-control" rows="3" placeholder="Apna kaam, tajruba, khususiyat likhen..." id="reg-bio"></textarea>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Extra Hunaar / Skills (Chunein)</label>
+          <div class="skills-tags" id="skillTags">
+            <span class="skill-tag" onclick="toggleSkill(this)">🏗️ Construction</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🔌 Wiring</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🚿 Bathroom Fitting</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🎨 Wall Painting</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🚪 Door/Window</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🏠 Roof Work</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🌿 Garden</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">❄️ AC Repair</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🔥 Gas Pipe</span>
+            <span class="skill-tag" onclick="toggleSkill(this)">🏎️ Heavy Vehicle</span>
+          </div>
+        </div>
+      </div>
+      <button class="submit-btn" onclick="submitRegistration()">✅ Profile Register Karein</button>
+    </div>
+  </div>
+</div>
+
+<!-- FIND SECTION -->
+<div id="section-find" class="section">
+  <div class="hero" style="padding: 40px 24px 50px;">
+    <h1>🏠 Apna <em>Labour</em> Chunein</h1>
+    <p>Apne ghar ke kaam ke liye behtar mazdoor yahan milega</p>
+  </div>
+  <div class="container">
+    <div class="tabs">
+      <button class="tab active" onclick="switchView('browse', this)">📋 Browse Labour</button>
+      <button class="tab" onclick="switchView('post', this)">📢 Job Post Karein</button>
+    </div>
+
+    <div id="view-browse">
+      <p class="section-title">Hamare <span>Mazdoor</span></p>
+      <p class="section-sub">Neeche se apna pansand ka mazdoor chunein aur rabita karein</p>
+      <div class="search-box">
+        <div class="search-row">
+          <input class="search-input" type="text" placeholder="🔍 Pesha ya naam..." id="findSearch" oninput="filterCards2()">
+          <select class="search-select" id="findCity" onchange="filterCards2()">
+            <option value="">📍 Tamam Shehr</option>
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Islamabad</option>
+            <option>Rawalpindi</option>
+            <option>Faisalabad</option>
+            <option>Peshawar</option>
+          </select>
+          <button class="search-btn" onclick="filterCards2()">Dhundhein</button>
+        </div>
+      </div>
+      <div class="cards-grid" id="cardsGrid2"></div>
+    </div>
+
+    <div id="view-post" style="display:none;">
+      <div class="form-card">
+        <div class="form-title">📢 Kaam Post Karein</div>
+        <div class="form-subtitle">Apna kaam describe karein, humari team aapko behtareen mazdoor dhundhegi!</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">* Apna Naam</label>
+            <input class="form-control" type="text" placeholder="Poora naam" id="post-name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">* Phone Number</label>
+            <input class="form-control" type="tel" placeholder="0300-0000000" id="post-phone">
+          </div>
+          <div class="form-group">
+            <label class="form-label">* Kaam Ki Qisam</label>
+            <select class="form-control" id="post-type">
+              <option value="">-- Chunein --</option>
+              <option>Mistri / Mason</option>
+              <option>Plumber</option>
+              <option>Electrician</option>
+              <option>Painter</option>
+              <option>Carpenter</option>
+              <option>Welder</option>
+              <option>Driver</option>
+              <option>AC Technician</option>
+              <option>General Labour</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">* Shehr / Ilaaqa</label>
+            <input class="form-control" type="text" placeholder="Maslan: Karachi, Gulshan" id="post-loc">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget (Rs.)</label>
+            <input class="form-control" type="number" placeholder="Maslan: 5000" id="post-budget">
+          </div>
+          <div class="form-group">
+            <label class="form-label">* Kab Chahiye? (Tarikh)</label>
+            <input class="form-control" type="date" id="post-date">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">* Kaam Ki Tafseelaat</label>
+            <textarea class="form-control" rows="4" placeholder="Kya kaam hai? Kitna kaam hai? Koi khas zarorat?" id="post-desc"></textarea>
+          </div>
+        </div>
+        <button class="submit-btn" onclick="submitJobPost()">📢 Kaam Post Karein</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" style="position:relative;" id="modalContent">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="modal-header">
+      <div class="modal-avatar" id="m-avatar">🧱</div>
+      <div>
+        <div class="modal-name" id="m-name">—</div>
+        <div class="modal-prof" id="m-prof">—</div>
+      </div>
+    </div>
+    <div class="modal-details">
+      <div class="detail-item"><div class="detail-key">📍 Shehr</div><div class="detail-val" id="m-city">—</div></div>
+      <div class="detail-item"><div class="detail-key">💰 Rozana Rate</div><div class="detail-val" id="m-rate">—</div></div>
+      <div class="detail-item"><div class="detail-key">⏳ Tajruba</div><div class="detail-val" id="m-exp">—</div></div>
+      <div class="detail-item"><div class="detail-key">✅ Status</div><div class="detail-val" id="m-status">—</div></div>
+    </div>
+    <div class="modal-body">
+      <p id="m-bio">—</p>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-call" onclick="callLabour()" style="font-size:14px; padding:12px;">📞 Phone Karein</button>
+      <button class="btn-hire" onclick="hireLabour()" style="font-size:14px; padding:12px;">🤝 Hire Karein</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="success-toast" id="toast">✅ Kamiyabi!</div>
+
+<footer>
+  <strong>Mazdoor Bazaar</strong> — Pakistan ka apna Labour Platform 🇵🇰<br>
+  <small>Hazaron mazdoor, hazaron kaam — sab ek jagah!</small>
+</footer>
+
+<script>
+const EMOJIS = {
+  'Mistri': '🧱', 'Mason': '🧱', 'Plumber': '🔧', 'Electrician': '⚡',
+  'Painter': '🎨', 'Carpenter': '🪵', 'Badhei': '🪵', 'Welder': '🔩',
+  'Lohar': '🔩', 'Driver': '🚛', 'Khallasi': '🚛', 'AC': '❄️',
+  'Tile': '🏗️', 'Gardener': '🌿', 'Mali': '🌿', 'General': '👷',
+};
+
+function getEmoji(prof) {
+  for (const key in EMOJIS) {
+    if (prof.includes(key)) return EMOJIS[key];
+  }
+  return '👷';
+}
+
+const SAMPLE_LABOUR = [
+  { id: 1, name: 'Muhammad Ashraf', profession: 'Mistri / Mason', city: 'Karachi', rate: 2000, exp: 12, available: true, bio: 'Karachi mein 12 saal se mistri ka kaam kar raha hoon. Ghar banane aur repairing mein mahir hoon.', phone: '0311-1234567', cat: 'mistri' },
+  { id: 2, name: 'Allah Ditta', profession: 'Electrician', city: 'Lahore', rate: 1800, exp: 8, available: true, bio: 'House wiring, distribution board, aur generator connection mein expert hoon.', phone: '0321-2345678', cat: 'electrician' },
+  { id: 3, name: 'Ghulam Rasool', profession: 'Plumber', city: 'Islamabad', rate: 1600, exp: 6, available: false, bio: 'Pipeline, bathroom fitting, aur sewerage kaam mein tajruba hai.', phone: '0333-3456789', cat: 'plumber' },
+  { id: 4, name: 'Noor Ahmed', profession: 'Painter', city: 'Rawalpindi', rate: 1400, exp: 10, available: true, bio: 'Interior aur exterior painting, texture work, aur waterproofing ka kaam karta hoon.', phone: '0345-4567890', cat: 'painter' },
+  { id: 5, name: 'Mehmood Khan', profession: 'Carpenter / Badhei', city: 'Faisalabad', rate: 2200, exp: 15, available: true, bio: 'Furniture banana aur fix karna, doors, windows, almari — sab kuch.', phone: '0300-5678901', cat: 'carpenter' },
+  { id: 6, name: 'Rehmat Ullah', profession: 'Welder / Lohar', city: 'Peshawar', rate: 1900, exp: 9, available: true, bio: 'Gate, grill, furniture welding mein mahir. Arc aur MIG dono karta hoon.', phone: '0301-6789012', cat: 'welder' },
+  { id: 7, name: 'Zulfiqar Ali', profession: 'Driver / Khallasi', city: 'Karachi', rate: 1200, exp: 5, available: true, bio: 'Heavy vehicle aur trailer chalane ka license hai. Long route par bhi tayar.', phone: '0302-7890123', cat: 'driver' },
+  { id: 8, name: 'Bashir Ahmed', profession: 'Electrician', city: 'Lahore', rate: 2100, exp: 14, available: false, bio: 'Factory aur commercial building ki wiring mein khas maharat. Solar panel bhi lagataa hoon.', phone: '0303-8901234', cat: 'electrician' },
+  { id: 9, name: 'Taj Muhammad', profession: 'Mistri / Mason', city: 'Multan', rate: 1700, exp: 7, available: true, bio: 'Tile lagna, plaster, aur finishing ka kaam achha karta hoon. Samay par kaam mera usool hai.', phone: '0304-9012345', cat: 'mistri' },
+];
+
+let allLabour = [...SAMPLE_LABOUR];
+let registeredLabour = [];
+let selectedCard = null;
+let currentCategory = 'all';
+
+function renderCards(containerId, list) {
+  const grid = document.getElementById(containerId);
+  if (!list.length) {
+    grid.innerHTML = '<p style="color:#9CA3AF;font-size:14px;padding:20px 0;">Koi mazdoor nahi mila. Search badal kar dekhein.</p>';
+    return;
+  }
+  grid.innerHTML = list.map(l => `
+    <div class="labour-card" onclick="openModal(${l.id}, '${containerId}')">
+      <div class="card-top">
+        <div class="avatar">${getEmoji(l.profession)}</div>
+        <div>
+          <div class="card-name">${l.name}</div>
+          <span class="card-profession">${l.profession}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-info">
+          <div class="info-row"><span class="info-icon">📍</span> <strong>${l.city}</strong></div>
+          <div class="info-row"><span class="info-icon">⏳</span> ${l.exp} saal ka tajruba</div>
+        </div>
+        <div class="card-rate">
+          <div><div class="rate-label">Rozana Ujrat</div><div class="rate-unit">per day</div></div>
+          <div class="rate-amount">Rs. ${l.rate.toLocaleString()}</div>
+        </div>
+        <div class="available-badge ${l.available ? 'yes' : 'no'}">
+          <div class="badge-dot"></div>
+          ${l.available ? 'Abhi Available ہے' : 'Busy / Available Nahi'}
+        </div>
+        <div class="card-actions">
+          <button class="btn-call" onclick="event.stopPropagation(); showToast('📞 ${l.phone} — Phone karein!')">📞 Call</button>
+          <button class="btn-hire" onclick="event.stopPropagation(); openModal(${l.id}, '${containerId}')">🤝 Hire</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getFilteredList() {
+  const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const city = document.getElementById('cityFilter')?.value || '';
+  return allLabour.filter(l => {
+    const matchQ = !q || l.name.toLowerCase().includes(q) || l.profession.toLowerCase().includes(q);
+    const matchCity = !city || l.city === city;
+    const matchCat = currentCategory === 'all' || l.cat === currentCategory;
+    return matchQ && matchCity && matchCat;
+  });
+}
+
+function getFilteredList2() {
+  const q = (document.getElementById('findSearch')?.value || '').toLowerCase();
+  const city = document.getElementById('findCity')?.value || '';
+  return allLabour.filter(l => {
+    const matchQ = !q || l.name.toLowerCase().includes(q) || l.profession.toLowerCase().includes(q);
+    const matchCity = !city || l.city === city;
+    return matchQ && matchCity;
+  });
+}
+
+function filterCards() { renderCards('cardsGrid', getFilteredList()); }
+function filterCards2() { renderCards('cardsGrid2', getFilteredList2()); }
+
+function filterCategory(cat, el) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  filterCards();
+}
+
+function openModal(id, gridId) {
+  const l = allLabour.find(x => x.id === id);
+  if (!l) return;
+  selectedCard = l;
+  document.getElementById('m-avatar').textContent = getEmoji(l.profession);
+  document.getElementById('m-name').textContent = l.name;
+  document.getElementById('m-prof').textContent = l.profession;
+  document.getElementById('m-city').textContent = l.city;
+  document.getElementById('m-rate').textContent = 'Rs. ' + l.rate.toLocaleString() + ' / din';
+  document.getElementById('m-exp').textContent = l.exp + ' saal';
+  document.getElementById('m-status').textContent = l.available ? '✅ Available' : '❌ Busy';
+  document.getElementById('m-bio').textContent = l.bio || 'Koi mazeed maloomat nahi.';
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e) {
+  if (e.target.id === 'modal') closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal').classList.remove('open');
+  selectedCard = null;
+}
+
+function callLabour() {
+  if (!selectedCard) return;
+  showToast('📞 ' + selectedCard.phone + ' — Phone karein!');
+}
+function hireLabour() {
+  if (!selectedCard) return;
+  showToast('🤝 ' + selectedCard.name + ' ko hire karne ki request bhej di gayi!');
+  closeModalDirect();
+}
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'home') { renderCards('cardsGrid', getFilteredList()); }
+  if (id === 'find') { renderCards('cardsGrid2', getFilteredList2()); }
+}
+
+function switchView(view, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('view-browse').style.display = view === 'browse' ? 'block' : 'none';
+  document.getElementById('view-post').style.display = view === 'post' ? 'block' : 'none';
+  if (view === 'browse') renderCards('cardsGrid2', getFilteredList2());
+}
+
+function toggleSkill(el) { el.classList.toggle('selected'); }
+
+function submitRegistration() {
+  const name = document.getElementById('reg-name').value.trim();
+  const phone = document.getElementById('reg-phone').value.trim();
+  const profession = document.getElementById('reg-profession').value;
+  const city = document.getElementById('reg-city').value;
+  const rate = parseInt(document.getElementById('reg-rate').value) || 0;
+  const exp = parseInt(document.getElementById('reg-exp').value) || 0;
+  const bio = document.getElementById('reg-bio').value.trim();
+
+  if (!name || !phone || !profession || !city || !rate) {
+    showToast('⚠️ Tamam zarori fields bharein!', true);
+    return;
+  }
+
+  const newLabour = {
+    id: Date.now(),
+    name, phone, profession, city, rate, exp,
+    available: true,
+    bio: bio || name + ' ek tajruba-yafta ' + profession + ' hain.',
+    cat: profession.toLowerCase().split('/')[0].trim()
+  };
+
+  allLabour.unshift(newLabour);
+  showToast('🎉 ' + name + ' — Profile kamiyabi se register ho gaya!');
+
+  // Reset form
+  ['reg-name','reg-phone','reg-rate','reg-exp','reg-bio'].forEach(id => { document.getElementById(id).value = ''; });
+  document.getElementById('reg-profession').value = '';
+  document.getElementById('reg-city').value = '';
+  document.querySelectorAll('.skill-tag').forEach(t => t.classList.remove('selected'));
+
+  setTimeout(() => showSection('home'), 1500);
+}
+
+function submitJobPost() {
+  const name = document.getElementById('post-name').value.trim();
+  const phone = document.getElementById('post-phone').value.trim();
+  const type = document.getElementById('post-type').value;
+  const loc = document.getElementById('post-loc').value.trim();
+  const desc = document.getElementById('post-desc').value.trim();
+
+  if (!name || !phone || !type || !loc || !desc) {
+    showToast('⚠️ Zarori fields bharein!', true);
+    return;
+  }
+
+  showToast('📢 Kaam post ho gaya! Hum aapko jald rabita karein ge.');
+  ['post-name','post-phone','post-loc','post-budget','post-desc'].forEach(id => { document.getElementById(id).value = ''; });
+  document.getElementById('post-type').value = '';
+  document.getElementById('post-date').value = '';
+}
+
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = isError ? '#DC2626' : 'var(--green)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// Init
+renderCards('cardsGrid', allLabour);
+</script>
+</body>
+</html>
